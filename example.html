@@ -6,21 +6,34 @@
 </head>
 
 <body>
-  <h2>F12 to debug...</h2>
+  <div id="div1">
+    <h3>when you click below the strong tag will be moved here</h3>
+  </div>
 
   <script>
     var myNewDiv = addHTML('div');
 
+    addHTML.select('body').css('padding', '5%');
+    addHTML.select('#div1')
+      .css('padding', '2em')
+      .css('background', '#080')
+      .css('color', '#4f4')
+
     myNewDiv
-      .appendTo(document.body)
+      .appendTo('body')
       .html('I am a dynamically created <strong>div</strong> element')
-      .delay(2000, function(){
+      .delay(2000, function() {
         this
-          .find('strong')
+          .select('strong') // select strong element in div
           .css('transition', 'all 500ms')
           .css('background-color', 'blue')
           .css('padding', myNewDiv.css('padding'))
           .css('color', 'rgb(255, 255, 255)')
+          .css('border-radius', '5px')
+          .parent() // select div
+          .parent() // select document
+          .css('background-color', '#333')
+          .css('color', 'white')
       })
       .css('transition', 'all 500ms')
       .delay(100, function() {
@@ -43,15 +56,21 @@
       })
       .on('click', function() {
         console.debug(this.html())
+        this.select('strong')
+          .appendTo('#div1')
         this.html('...and i\'ve been clicked')
       })
       .on('mouseenter', function() {
-        this.css('background-color', '#fde')
+        this
+          .css('background-color', '#f80')
           .css('padding', '2em')
+          .css('color', '#000')
       })
       .on('mouseleave', function() {
-        this.css('background-color', '')
+        this
+          .css('background-color', '')
           .css('padding', '1em')
+          .css('color', '')
       });
   </script>
 </body>
