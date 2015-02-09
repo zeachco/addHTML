@@ -4,22 +4,37 @@
     <script src="html-selector.js"></script>
   </head>
   <body>
+
+    <h2>F12 to debug...</h2>
+
     <script>
-      addHTML('div')
+      var myNewDiv = addHTML('div');
+
+      myNewDiv
         .appendTo(document.body)
         .html('Je suis un DIV!')
         .css('padding', '1em')
         .css('border-shadow', '0 0 5px #888')
         .attr('id', 'test')
-        .addClass('primary')
         .addClass('btn btn-default')
+        .delay(200, function(){
+          this.addClass('primary')
+          console.debug('class is now', this.attr('class'));
+        })
         .delay(1000, function(){
-          console.log(this.className);
           this.removeClass('primary')
+          console.debug('class is now', this.attr('class'));
         })
         .on('click', function(){
-          alert(this.html())
+          console.debug(this.html())
         })
+        .on('mouseenter', function(){
+          this.css('background-color', '#fde')
+        })
+        .on('mouseleave', function(){
+          this.css('background-color', '')
+        });
+
     </script>
   </body>
 </html>
