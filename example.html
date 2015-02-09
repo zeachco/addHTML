@@ -5,7 +5,12 @@
   </head>
   <body>
     <script>
-      
+      addHTML('div')
+        .appendTo(document.body)
+        .html('Je suis un DIV!')
+        .on('click', function(){
+          alert(this.html())
+        })
     </script>
   </body>
 </html>
