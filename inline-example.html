@@ -25,27 +25,37 @@
 
       myNewDiv
         .appendTo(document.body)
-        .html('Je suis un DIV!')
-        .css('padding', '1em')
-        .css('border-shadow', '0 0 5px #888')
+        .html('I am a dynamically created <strong>div</strong> element')
+        .css('transition', 'all 500ms')
+        .delay(100, function() {
+          this
+            .css('padding', '1em')
+        })
+        .css('cursor', 'pointer')
+        .css('padding', '0')
+        .css('box-shadow', '0 0 5px #888')
+        .css('border-radius', '3px')
         .attr('id', 'test')
         .addClass('btn btn-default')
-        .delay(200, function(){
+        .delay(200, function() {
           this.addClass('primary')
           console.debug('class is now', this.attr('class'));
         })
-        .delay(1000, function(){
+        .delay(1000, function() {
           this.removeClass('primary')
           console.debug('class is now', this.attr('class'));
         })
-        .on('click', function(){
+        .on('click', function() {
           console.debug(this.html())
+          this.html('...and i\'ve been clicked')
         })
-        .on('mouseenter', function(){
+        .on('mouseenter', function() {
           this.css('background-color', '#fde')
+            .css('padding', '2em')
         })
-        .on('mouseleave', function(){
+        .on('mouseleave', function() {
           this.css('background-color', '')
+            .css('padding', '1em')
         });
 
     </script>
