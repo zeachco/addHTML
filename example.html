@@ -8,6 +8,15 @@
       addHTML('div')
         .appendTo(document.body)
         .html('Je suis un DIV!')
+        .css('padding', '1em')
+        .css('border-shadow', '0 0 5px #888')
+        .attr('id', 'test')
+        .addClass('primary')
+        .addClass('btn btn-default')
+        .delay(1000, function(){
+          console.log(this.className);
+          this.removeClass('primary')
+        })
         .on('click', function(){
           alert(this.html())
         })
