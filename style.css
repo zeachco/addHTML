@@ -1,0 +1,9 @@
+.btn {
+  padding: 1em;
+  border: 1px solid #888;
+  border-radius: 3px;
+  opacity: 0.8;
+}
+.btn:hover {
+  opacity: 1;
+}
