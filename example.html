@@ -14,6 +14,13 @@
     myNewDiv
       .appendTo(document.body)
       .html('I am a dynamically created <strong>div</strong> element')
+      .delay(5000, function(){
+        this
+          .find('strong')
+          .css('background-color', 'blue')
+          .css('padding', myNewDiv.css('padding'))
+          .css('color', 'rgb(255, 255, 255)')
+      })
       .css('transition', 'all 500ms')
       .delay(100, function() {
         this
