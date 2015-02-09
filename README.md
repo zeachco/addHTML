@@ -1,4 +1,4 @@
-# html-selector
+# addHTML()
 small selector to add DOM and changes properties (most common used)
 
 a minimalistic lib that hold within 14 lines of code that replace most used DOM selector features.
