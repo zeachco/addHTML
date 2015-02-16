@@ -73,10 +73,6 @@
       }, delay);
       return elem;
     };
-    elem.do = function(callback) {
-      callback.call(elem);
-      return elem;
-    };
     elem.select = function(select) {
       return addHTML.select(select, elem);
     };
