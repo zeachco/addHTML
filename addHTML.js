@@ -50,12 +50,12 @@
       return elem;
     };
     // listen to an event
-    elem.on = function(ev, cb) {
-      return elem.addEventListener(ev, cb) || elem;
+    elem.on = function(event, callback) {
+      return elem.addEventListener(event, callback) || elem;
     };
     // stop listening to an event
-    elem.off = function(ev, cb) {
-      return elem.removeEventListener(ev, cb) || elem;
+    elem.off = function(event, callback) {
+      return elem.removeEventListener(event, callback) || elem;
     };
     elem.addClass = function(c) {
       return void(elem.className = (elem.className + ' ' + c).trim()) || elem;
@@ -67,14 +67,14 @@
     elem.remove = function() {
       elem.parentNode.removeChild(elem);
     };
-    elem.delay = function(delay, cb) {
+    elem.delay = function(delay, callback) {
       setTimeout(function() {
-        cb.call(elem);
+        callback.call(elem);
       }, delay);
       return elem;
     };
-    elem.do = function(cb) {
-      cb.call(elem);
+    elem.do = function(callback) {
+      callback.call(elem);
       return elem;
     };
     elem.select = function(select) {
@@ -86,7 +86,7 @@
     elem.parent = function() {
       return addHTML(elem.parentNode);
     };
-    elem.each = window.forEach;
+    elem.each = Array.forEach;
     return elem;
   }
   addHTML.select = function(selector, parent) {
@@ -115,16 +115,26 @@
     if (typeof selector === 'object') {
       return [addHTML(selector)];
     }
+    get = [];
     switch (selector[0]) {
       case '':
-        return [addHTML(selector)];
+        get.push.apply(get, addHTML(selector));
+        break;
       case '#':
-        return [addHTML(parent.getElementById(selector.substr(1)))];
+        get.push.apply(get, [addHTML(parent.getElementById(selector.substr(1)))]);
+        break;
       case '.':
-        return addHTML(parent.getElementsByClass(selector.substr(1)));
+        get.push.apply(get, [addHTML(parent.getElementsByClass(selector.substr(1)))]);
+        break;
       default:
-        return addHTML(parent.getElementsByTagName(selector));
+        get.push.apply(get, addHTML(parent.getElementsByTagName(selector)));
     }
+    get.each = function(callback) {
+      get.forEach(function(elem, index) {
+        callback.apply(elem, [elem, index]);
+      });
+    };
+    return get;
   };
   window[namespace] = addHTML;
 })(document);
