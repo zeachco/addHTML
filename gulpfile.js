@@ -1,8 +1,8 @@
 var gulp = require('gulp');
-var jsmin = require('gulp-jsmin');
+var uglify = require('gulp-uglify');
 
 gulp.task('default', function() {
   gulp.src('addHTML.js')
-    .pipe(jsmin())
+    .pipe(uglify())
     .pipe(gulp.dest('build'));
 });

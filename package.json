@@ -16,8 +16,9 @@
     "url": "https://github.com/zeachco/addHTML/issues"
   },
   "homepage": "https://github.com/zeachco/addHTML",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-jsmin": "^0.1.4"
+    "gulp-uglify": "^1.1.0"
   }
 }
