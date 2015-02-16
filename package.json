@@ -1,0 +1,23 @@
+{
+  "name": "addHTML",
+  "version": "1.0.0",
+  "description": "small selector to add DOM and changes properties (most common used)",
+  "main": "addHTML.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeachco/addHTML.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeachco/addHTML/issues"
+  },
+  "homepage": "https://github.com/zeachco/addHTML",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jsmin": "^0.1.4"
+  }
+}
