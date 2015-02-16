@@ -11,6 +11,7 @@
   </div>
 
   <script>
+
     var myNewDiv = addHTML('div');
 
     addHTML.select('body').css('padding', '5%');
@@ -23,6 +24,7 @@
       .appendTo('body')
       .html('I am a dynamically created <strong>div</strong> element')
       .delay(2000, function() {
+        var strong = this.select('strong');
         this
           .select('strong') // select strong element in div
           .css('transition', 'all 500ms')
